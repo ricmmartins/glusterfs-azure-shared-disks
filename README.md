@@ -103,7 +103,56 @@ $nic = New-AzNetworkInterface `
   -NetworkSecurityGroupId $nsg.Id
 ```
 
-
+### Create availability set for the virtual machines. 
+```azurepowershell-interactive
+$set = @{
+    Name = 'myAvSet'
+    ResourceGroupName = 'myResourceGroup'
+    Location = 'eastus'
+    Sku = 'Aligned'
+    PlatformFaultDomainCount = '2'
+    PlatformUpdateDomainCount =  '2'
+}
+$avs = New-AzAvailabilitySet @set
+```
+## Create a virtual machine
+### Define a credential object
+```azurepowershell-interactive
+$securePassword = ConvertTo-SecureString ' ' -AsPlainText -Force
+$cred = New-Object System.Management.Automation.PSCredential ("azureuser", $securePassword)
+```
+### Create a virtual machine configuration
+```azurepowershell-interactive
+$vmConfig = New-AzVMConfig `
+  -AvailabilitySetId $avs.Id `
+  -VMName "myVM01" `
+  -VMSize "Standard_D4s_v3" | `
+Set-AzVMOperatingSystem `
+  -Linux `
+  -ComputerName "myVM01" `
+  -Credential $cred `
+  -DisablePasswordAuthentication | `
+Set-AzVMSourceImage `
+  -PublisherName "Canonical" `
+  -Offer "UbuntuServer" `
+  -Skus "18.04-LTS" `
+  -Version "latest" | `
+Add-AzVMNetworkInterface `
+  -Id $nic.Id
+```
+### Configure the SSH key
+```azurepowershell-interactive
+$sshPublicKey = cat ~/.ssh/id_rsa.pub
+Add-AzVMSshPublicKey `
+  -VM $vmconfig `
+  -KeyData $sshPublicKey `
+  -Path "/home/azureuser/.ssh/authorized_keys"
+```
+## Create a Shared Data Disk
+```azurepowershell-interactive
+$dataDiskConfig = New-AzDiskConfig -Location 'EastUS' -DiskSizeGB 1024 -AccountType Premium_LRS -CreateOption Empty -MaxSharesCount 2
+New-AzDisk -ResourceGroupName 'myResourceGroup' -DiskName 'mySharedDisk' -Disk $dataDiskConfig
+```
 
 
 
