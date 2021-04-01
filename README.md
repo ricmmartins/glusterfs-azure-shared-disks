@@ -18,7 +18,10 @@ Our setup will consists in:
       * 2 Network Security Groups (1 per VM Network Interface Card)
    * A Shared Data Disk attached to the both VMs
 
+I'll be using the [Azure Cloud Shell](https://docs.microsoft.com/en-us/azure/cloud-shell/overview) once is fully integrated to Azure and with all modules I need already installed.
 
+## Create SSH key pair
+ssh-keygen -t rsa -b 4096
  
 
 
