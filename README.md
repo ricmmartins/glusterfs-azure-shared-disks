@@ -1,4 +1,4 @@
-# Setting-up a GlusterFS using Azure Shared Disks on Ubuntu Linux 18.04
+# Setting pp a GlusterFS using Azure Shared Disks on Ubuntu Linux 18.04
 A guide on howto create a redundant storage pool using GlusterFS using Azure Shared Disks 
 
 
@@ -28,9 +28,9 @@ I'll be using the [Azure Cloud Shell](https://docs.microsoft.com/en-us/azure/clo
 
 # Create virtual network resources
 ## Create a subnet configuration
-```$subnetConfig = New-AzVirtualNetworkSubnetConfig `
+$subnetConfig = New-AzVirtualNetworkSubnetConfig `
   -Name "mySubnet" `
-  -AddressPrefix 192.168.1.0/24```
+  -AddressPrefix 192.168.1.0/24
 
 ## Create a virtual network
 ```$vnet = New-AzVirtualNetwork `
