@@ -300,13 +300,13 @@ ssh azureuser@40.114.24.217
 ```azurepowershell-interactive
 lsblk -o NAME,HCTL,SIZE,MOUNTPOINT | grep -i "sd"
 ```
-# Partition a new disk
+### Partition a new disk
 ```azurepowershell-interactive
 sudo parted /dev/sda --script mklabel gpt mkpart xfspart xfs 0% 100%
 sudo mkfs.xfs /dev/sda1
 sudo partprobe /dev/sda1
 ```
-# Mount the disk
+### Mount the disk
 ```azurepowershell-interactive
 sudo mkdir /datadrive
 sudo mount /dev/sda1 /datadrive
