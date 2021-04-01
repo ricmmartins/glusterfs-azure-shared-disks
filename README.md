@@ -26,31 +26,40 @@ ssh-keygen -t rsa -b 4096
 ```
  
 # Create a resource group
+```azurepowershell-interactive
 New-AzResourceGroup -Name "myResourceGroup" -Location "EastUS"
+```
 
 # Create virtual network resources
 ## Create a subnet configuration
+```azurepowershell-interactive
 $subnetConfig = New-AzVirtualNetworkSubnetConfig `
   -Name "mySubnet" `
   -AddressPrefix 192.168.1.0/24
+```
 
 ## Create a virtual network
+```azurepowershell-interactive
 $vnet = New-AzVirtualNetwork `
   -ResourceGroupName "myResourceGroup" `
   -Location "EastUS" `
   -Name "myVNET" `
   -AddressPrefix 192.168.0.0/16 `
   -Subnet $subnetConfig
+```
 
 ## Create a public IP address and specify a DNS name
+```azurepowershell-interactive
 $pip = New-AzPublicIpAddress `
   -ResourceGroupName "myResourceGroup" `
   -Location "EastUS" `
   -AllocationMethod Static `
   -IdleTimeoutInMinutes 4 `
   -Name "mypublicip01"
+```
 
 ## Create an inbound network security group rule for port 22
+```azurepowershell-interactive
 $nsgRuleSSH = New-AzNetworkSecurityRuleConfig `
   -Name "myNetworkSecurityGroupRuleSSH"  `
   -Protocol "Tcp" `
@@ -61,8 +70,9 @@ $nsgRuleSSH = New-AzNetworkSecurityRuleConfig `
   -DestinationAddressPrefix * `
   -DestinationPortRange 22 `
   -Access "Allow"
-
+```
 ## Create an inbound network security group rule for port 80
+```azurepowershell-interactive
 $nsgRuleWeb = New-AzNetworkSecurityRuleConfig `
   -Name "myNetworkSecurityGroupRuleWWW"  `
   -Protocol "Tcp" `
@@ -73,15 +83,17 @@ $nsgRuleWeb = New-AzNetworkSecurityRuleConfig `
   -DestinationAddressPrefix * `
   -DestinationPortRange 80 `
   -Access "Allow"
-
+```
 ## Create a network security group
+```azurepowershell-interactive
 $nsg = New-AzNetworkSecurityGroup `
   -ResourceGroupName "myResourceGroup" `
   -Location "EastUS" `
   -Name "myNetworkSecurityGroup01" `
   -SecurityRules $nsgRuleSSH,$nsgRuleWeb
-
+```
 ## Create a virtual network card and associate with public IP address and NSG
+```azurepowershell-interactive
 $nic = New-AzNetworkInterface `
   -Name "myNic01" `
   -ResourceGroupName "myResourceGroup" `
@@ -89,7 +101,7 @@ $nic = New-AzNetworkInterface `
   -SubnetId $vnet.Subnets[0].Id `
   -PublicIpAddressId $pip.Id `
   -NetworkSecurityGroupId $nsg.Id
-
+```
 
 
 
