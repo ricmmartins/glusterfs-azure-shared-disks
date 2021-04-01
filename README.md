@@ -20,25 +20,25 @@ Our setup will consists in:
 
 I'll be using the [Azure Cloud Shell](https://docs.microsoft.com/en-us/azure/cloud-shell/overview) once is fully integrated to Azure and with all modules I need already installed.
 
-# Create SSH key pair
+## Create SSH key pair
 ```azurepowershell-interactive
 ssh-keygen -t rsa -b 4096
 ```
  
-# Create a resource group
+## Create a resource group
 ```azurepowershell-interactive
 New-AzResourceGroup -Name "myResourceGroup" -Location "EastUS"
 ```
 
-# Create virtual network resources
-## Create a subnet configuration
+## Create virtual network resources
+### Create a subnet configuration
 ```azurepowershell-interactive
 $subnetConfig = New-AzVirtualNetworkSubnetConfig `
   -Name "mySubnet" `
   -AddressPrefix 192.168.1.0/24
 ```
 
-## Create a virtual network
+### Create a virtual network
 ```azurepowershell-interactive
 $vnet = New-AzVirtualNetwork `
   -ResourceGroupName "myResourceGroup" `
@@ -48,7 +48,7 @@ $vnet = New-AzVirtualNetwork `
   -Subnet $subnetConfig
 ```
 
-## Create a public IP address and specify a DNS name
+### Create a public IP address and specify a DNS name
 ```azurepowershell-interactive
 $pip = New-AzPublicIpAddress `
   -ResourceGroupName "myResourceGroup" `
@@ -58,7 +58,7 @@ $pip = New-AzPublicIpAddress `
   -Name "mypublicip01"
 ```
 
-## Create an inbound network security group rule for port 22
+### Create an inbound network security group rule for port 22
 ```azurepowershell-interactive
 $nsgRuleSSH = New-AzNetworkSecurityRuleConfig `
   -Name "myNetworkSecurityGroupRuleSSH"  `
@@ -71,7 +71,7 @@ $nsgRuleSSH = New-AzNetworkSecurityRuleConfig `
   -DestinationPortRange 22 `
   -Access "Allow"
 ```
-## Create an inbound network security group rule for port 80
+### Create an inbound network security group rule for port 80
 ```azurepowershell-interactive
 $nsgRuleWeb = New-AzNetworkSecurityRuleConfig `
   -Name "myNetworkSecurityGroupRuleWWW"  `
@@ -84,7 +84,7 @@ $nsgRuleWeb = New-AzNetworkSecurityRuleConfig `
   -DestinationPortRange 80 `
   -Access "Allow"
 ```
-## Create a network security group
+### Create a network security group
 ```azurepowershell-interactive
 $nsg = New-AzNetworkSecurityGroup `
   -ResourceGroupName "myResourceGroup" `
@@ -92,7 +92,7 @@ $nsg = New-AzNetworkSecurityGroup `
   -Name "myNetworkSecurityGroup01" `
   -SecurityRules $nsgRuleSSH,$nsgRuleWeb
 ```
-## Create a virtual network card and associate with public IP address and NSG
+### Create a virtual network card and associate with public IP address and NSG
 ```azurepowershell-interactive
 $nic = New-AzNetworkInterface `
   -Name "myNic01" `
