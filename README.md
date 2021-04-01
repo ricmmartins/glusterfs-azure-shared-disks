@@ -234,7 +234,7 @@ update-AzVm -VM $VirtualMachine -ResourceGroupName "myResourceGroup"
 ```azurepowershell-interactive
 $ppg = New-AzProximityPlacementGroup -Location "EastUS" -Name "myPPG" -ResourceGroupName "myResourceGroup" -ProximityPlacementGroupType Standard
 ```
-# Move the existing availability set into a proximity placement group
+### Move the existing availability set into a proximity placement group
 ```azurepowershell-interactive
 $resourceGroup = "myResourceGroup"
 $avSetName = "myAvSet"
