@@ -1,5 +1,5 @@
 # Configuring a GlusterFS using Azure Shared Disks on Ubuntu Linux 18.04
-A guide on howto create a redundant storage pool using GlusterFS using Azure Shared Disks 
+A guide on howto create a redundant storage pool using GlusterFS and Azure Shared Disks 
 
 
 Build your workload in cloud doesn't mean that your workload never will fail. When you start to draft your architecture, consider that all can fail. This is what will ensure your availability. Keep in mind: 
