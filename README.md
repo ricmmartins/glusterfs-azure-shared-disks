@@ -21,7 +21,7 @@ Our setup will consists in:
 I'll be using the [Azure Cloud Shell](https://docs.microsoft.com/en-us/azure/cloud-shell/overview) once is fully integrated to Azure and with all modules I need already installed.
 
 ## Create SSH key pair
-ssh-keygen -t rsa -b 4096
+` ` `ssh-keygen -t rsa -b 4096` ` `
  
 ## Create a resource group
 New-AzResourceGroup -Name "myResourceGroup" -Location "EastUS"
