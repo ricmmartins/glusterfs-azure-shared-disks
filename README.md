@@ -20,6 +20,8 @@ Our setup will consist in:
 
 I'll be using the [Azure Cloud Shell](https://docs.microsoft.com/en-us/azure/cloud-shell/overview) once is fully integrated to Azure and with all modules I need already installed.
 
+# Table of contents
+
 ## Create SSH key pair
 ```azurepowershell-interactive
 ssh-keygen -t rsa -b 4096
