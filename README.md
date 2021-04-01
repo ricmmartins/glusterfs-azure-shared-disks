@@ -115,7 +115,7 @@ $set = @{
 }
 $avs = New-AzAvailabilitySet @set
 ```
-## Create a virtual machine
+## Creating the first virtual machine
 ### Define a credential object
 ```azurepowershell-interactive
 $securePassword = ConvertTo-SecureString ' ' -AsPlainText -Force
@@ -148,10 +148,24 @@ Add-AzVMSshPublicKey `
   -KeyData $sshPublicKey `
   -Path "/home/azureuser/.ssh/authorized_keys"
 ```
+### Create the VM
+```azurepowershell-interactive
+New-AzVM `
+  -ResourceGroupName "myResourceGroup" `
+  -Location eastus -VM $vmConfig
+```
+
 ## Create a Shared Data Disk
 ```azurepowershell-interactive
 $dataDiskConfig = New-AzDiskConfig -Location 'EastUS' -DiskSizeGB 1024 -AccountType Premium_LRS -CreateOption Empty -MaxSharesCount 2
 New-AzDisk -ResourceGroupName 'myResourceGroup' -DiskName 'mySharedDisk' -Disk $dataDiskConfig
+```
+### Attach the Data Disk
+```azurepowershell-interactive
+$dataDisk = Get-AzDisk -ResourceGroupName "myResourceGroup" -DiskName "mySharedDisk"
+$VirtualMachine = Get-AzVM -ResourceGroupName "myResourceGroup" -Name "myVM01"
+Add-AzVMDataDisk -VM $VirtualMachine -Name "mySharedDisk" -CreateOption Attach -ManagedDiskId $dataDisk.Id -Lun 0
+update-AzVm -VM $VirtualMachine -ResourceGroupName "myResourceGroup"
 ```
 
 
