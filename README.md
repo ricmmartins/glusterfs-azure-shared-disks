@@ -22,6 +22,11 @@ I'll be using the [Azure Cloud Shell](https://docs.microsoft.com/en-us/azure/clo
 
 # Table of contents
 
+1. Create SSH key pair
+2. Create a resource group
+3. Create virtual network resources
+4. Creating the first virtual machine (myVM01)
+
 ## Create SSH key pair
 ```azurepowershell-interactive
 ssh-keygen -t rsa -b 4096
