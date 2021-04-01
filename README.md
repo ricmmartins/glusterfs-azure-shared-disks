@@ -12,10 +12,11 @@ Our setup will consists in:
 
 * An Azure Resource Group containing the resources
    * An Azure VNET and a Subnet
-   * an Availability Set into an Proximity Placement Group
+   * An Availability Set into a Proximity Placement Group
    * 2 Linux VMs (Ubuntu 18.04)
       * 2 Public IPs (one for each VM)
       * 2 Network Security Groups (1 per VM Network Interface Card)
+   * A Shared Data Disk attached to the both VMs
 
 
  
