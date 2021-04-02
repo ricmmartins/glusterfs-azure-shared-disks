@@ -94,7 +94,7 @@ $vnet = New-AzVirtualNetwork `
 
 ### Create a public IP address for the VM01
 ```azurepowershell-interactive
-$pip1 = New-AzPublicIpAddress `
+$pip01 = New-AzPublicIpAddress `
   -ResourceGroupName "myResourceGroup" `
   -Location "EastUS" `
   -AllocationMethod Static `
@@ -104,7 +104,7 @@ $pip1 = New-AzPublicIpAddress `
 
 ### Create a public IP address for the VM02
 ```azurepowershell-interactive
-$pip2 = New-AzPublicIpAddress `
+$pip02 = New-AzPublicIpAddress `
   -ResourceGroupName "myResourceGroup" `
   -Location "EastUS" `
   -AllocationMethod Static `
@@ -145,22 +145,22 @@ $nsg = New-AzNetworkSecurityGroup `
 ```
 ### Create a virtual network card for VM01 and associate with public IP address and NSG
 ```azurepowershell-interactive
-$nic = New-AzNetworkInterface `
+$nic01 = New-AzNetworkInterface `
   -Name "myNic01" `
   -ResourceGroupName "myResourceGroup" `
   -Location "EastUS" `
   -SubnetId $vnet.Subnets[0].Id `
-  -PublicIpAddressId $pip1.Id `
+  -PublicIpAddressId $pip01.Id `
   -NetworkSecurityGroupId $nsg.Id
 ```
 ### Create a virtual network card for VM02 and associate with public IP address and NSG
 ```azurepowershell-interactive
-$nic = New-AzNetworkInterface `
+$nic02 = New-AzNetworkInterface `
   -Name "myNic02" `
   -ResourceGroupName "myResourceGroup" `
   -Location "EastUS" `
   -SubnetId $vnet.Subnets[0].Id `
-  -PublicIpAddressId $pip2.Id `
+  -PublicIpAddressId $pip02.Id `
   -NetworkSecurityGroupId $nsg.Id
 ```
 ### Create availability set for the virtual machines. 
@@ -198,7 +198,7 @@ Set-AzVMSourceImage `
   -Skus "18.04-LTS" `
   -Version "latest" | `
 Add-AzVMNetworkInterface `
-  -Id $nic.Id
+  -Id $nic01.Id
 ```
 ### Configure the SSH key
 ```azurepowershell-interactive
@@ -238,7 +238,7 @@ Set-AzVMSourceImage `
   -Skus "18.04-LTS" `
   -Version "latest" | `
 Add-AzVMNetworkInterface `
-  -Id $nic.Id
+  -Id $nic02.Id
 ```
 ### Configure the SSH key
 ```azurepowershell-interactive
