@@ -449,6 +449,10 @@ sudo nano /etc/fstab
 > Add the following at the end of the file
 ```azurepowershell-interactive
 gluster2.local:sharedvolume /gluster-storage glusterfs defaults,_netdev 0 0
+
+```
+
+```azurepowershell-interactive
 sudo mount -a
 ```
 
