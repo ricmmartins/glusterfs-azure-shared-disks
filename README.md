@@ -25,7 +25,18 @@ I'll be using the [Azure Cloud Shell](https://docs.microsoft.com/en-us/azure/clo
 1. Create SSH key pair
 2. Create a resource group
 3. Create virtual network resources
-4. Creating the first virtual machine (myVM01)
+4. Create the first virtual machine (myVM01)
+5. Create the second virtual machine (myVM02)
+6. Create a Shared Data Disk
+7. Create a proximity placement group
+8. Configure the Disk on Linux VM01
+9. Configure the Disk on Linux VM02
+10. Install GlusterFS on Linux VM01
+11. Install GlusterFS on Linux VM02
+12. Configure GlusterFS on Linx VM01
+13. Configure GlusterFS on Linx VM02
+14. Test
+
 
 ## Create SSH key pair
 ```azurepowershell-interactive
@@ -138,7 +149,7 @@ $set = @{
 }
 $avs = New-AzAvailabilitySet @set
 ```
-## Creating the first virtual machine (myVM01)
+## Create the first virtual machine (myVM01)
 ### Define a credential object
 ```azurepowershell-interactive
 $securePassword = ConvertTo-SecureString ' ' -AsPlainText -Force
@@ -178,7 +189,7 @@ New-AzVM `
   -Location eastus -VM $vmConfig
 ```
 
-## Creating the second virtual machine (myVM02)
+## Create the second virtual machine (myVM02)
 ### Define a credential object
 ```azurepowershell-interactive
 $securePassword = ConvertTo-SecureString ' ' -AsPlainText -Force
@@ -261,7 +272,7 @@ foreach ($vmId in $vmIDs){
     Start-AzVM -ResourceGroupName $resourceGroup -Name $vmName 
     }
 ```
-## Configuring the Disk on Linux VM01
+## Configure the Disk on Linux VM01
 ```azurepowershell-interactive
 ssh azureuser@13.82.29.9
 ```
@@ -299,7 +310,7 @@ sudo nano /etc/fstab
 ```azurepowershell-interactive
 UUID=f0b4e401-e9dc-472e-b9ca-3fa06a5b2e22   /datadrive   xfs   defaults,nofail   1   2
 ```
-## Configuring the Disk on Linux VM02
+## Configure the Disk on Linux VM02
 ```azurepowershell-interactive
 ssh azureuser@40.114.24.217
 ```
@@ -338,7 +349,7 @@ sudo nano /etc/fstab
 UUID=f0b4e401-e9dc-472e-b9ca-3fa06a5b2e22   /datadrive   xfs   defaults,nofail   1   2
 ```
 
-## Installing GlusterFS on Linux VM01
+## Install GlusterFS on Linux VM01
 
 Please note that in my case the IPs 192.168.1.4 and 192.168.1.4 are the private ip's from VM01 and VM02. Add those configuration on the /etc/hosts
 ```azurepowershell-interactive
@@ -356,7 +367,7 @@ sudo apt update
 sudo apt install glusterfs-server -y
 sudo systemctl status glusterd.service
 ```
-## Installing GlusterFS on Linux VM02
+## Install GlusterFS on Linux VM02
 
 Please note that the IPs 192.168.1.4 and 192.168.1.4  are the private ip's from VM01 and VM02. Add those configuration on the /etc/hosts
 ```azurepowershell-interactive
@@ -375,7 +386,7 @@ sudo apt install glusterfs-server -y
 sudo systemctl status glusterd.service
 ```
 
-## Configuring Gluster on Linx VM01
+## Configure GlusterFS on Linx VM01
 ```azurepowershell-interactive
 sudo gluster peer probe gluster2
 sudo gluster peer status
@@ -396,7 +407,7 @@ gluster1.local:sharedvolume /gluster-storage glusterfs defaults,_netdev 0 0
 sudo mount -a
 ```
 
-## Configuring Gluster on Linx VM02
+## Configure GlusterFS on Linx VM02
 ```azurepowershell-interactive
 sudo gluster peer probe gluster1
 sudo gluster peer status
@@ -413,7 +424,7 @@ gluster2.local:sharedvolume /gluster-storage glusterfs defaults,_netdev 0 0
 sudo mount -a
 ```
 
-## Testing 
+## Test 
 
 In one of the nodes, go to /gluster-storage and create some files:
 ```azurepowershell-interactive
