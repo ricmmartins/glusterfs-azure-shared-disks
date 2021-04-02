@@ -334,7 +334,7 @@ The ouput should be something similar to:
 ```azurepowershell-interactive
 sudo nano /etc/fstab
 ```
-> use the UUID value for the /dev/sdb1 device. Chnage by the UUID from your case and add the following at the end of the file:
+> use the UUID value for the /dev/sdb1 device. Change by the UUID from your case and add the following at the end of the file:
 ```azurepowershell-interactive
 UUID=f0b4e401-e9dc-472e-b9ca-3fa06a5b2e22   /datadrive   xfs   defaults,nofail   1   2
 ```
@@ -372,7 +372,7 @@ The ouput should be something similar to:
 ```azurepowershell-interactive
 sudo nano /etc/fstab
 ```
-> use the UUID value for the /dev/sda1 device. Chnage by the UUID from your case and add the following at the end of the file:
+> use the UUID value for the /dev/sda1 device. Change by the UUID from your case and add the following at the end of the file:
 ```azurepowershell-interactive
 UUID=f0b4e401-e9dc-472e-b9ca-3fa06a5b2e22   /datadrive   xfs   defaults,nofail   1   2
 ```
