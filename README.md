@@ -109,7 +109,7 @@ $pip = New-AzPublicIpAddress `
   -Location "EastUS" `
   -AllocationMethod Static `
   -IdleTimeoutInMinutes 4 `
-  -Name "mypublicip01"
+  -Name "mypublicip02"
 ```
 
 
