@@ -94,7 +94,7 @@ $vnet = New-AzVirtualNetwork `
 
 ### Create a public IP address for the VM01
 ```azurepowershell-interactive
-$pip = New-AzPublicIpAddress `
+$pip1 = New-AzPublicIpAddress `
   -ResourceGroupName "myResourceGroup" `
   -Location "EastUS" `
   -AllocationMethod Static `
@@ -104,7 +104,7 @@ $pip = New-AzPublicIpAddress `
 
 ### Create a public IP address for the VM02
 ```azurepowershell-interactive
-$pip = New-AzPublicIpAddress `
+$pip2 = New-AzPublicIpAddress `
   -ResourceGroupName "myResourceGroup" `
   -Location "EastUS" `
   -AllocationMethod Static `
@@ -150,7 +150,7 @@ $nic = New-AzNetworkInterface `
   -ResourceGroupName "myResourceGroup" `
   -Location "EastUS" `
   -SubnetId $vnet.Subnets[0].Id `
-  -PublicIpAddressId $pip.Id `
+  -PublicIpAddressId $pip1.Id `
   -NetworkSecurityGroupId $nsg.Id
 ```
 ### Create a virtual network card for VM02 and associate with public IP address and NSG
@@ -160,7 +160,7 @@ $nic = New-AzNetworkInterface `
   -ResourceGroupName "myResourceGroup" `
   -Location "EastUS" `
   -SubnetId $vnet.Subnets[0].Id `
-  -PublicIpAddressId $pip.Id `
+  -PublicIpAddressId $pip2.Id `
   -NetworkSecurityGroupId $nsg.Id
 ```
 ### Create availability set for the virtual machines. 
