@@ -22,7 +22,7 @@ I'll be using the [Azure Cloud Shell](https://docs.microsoft.com/en-us/azure/clo
 
 # Table of contents
 
-1. [Create SSH key pair](https://github.com/ricmmartins/glusterfs-azure-shared-disks/blob/main/README.md#create-ssh-key-pair)
+1. [Create SSH key pair](#create-ssh-key-pair)
 2. [Create a resource group](https://github.com/ricmmartins/glusterfs-azure-shared-disks/blob/main/README.md#create-a-resource-group)
 3. [Create virtual network resources](https://github.com/ricmmartins/glusterfs-azure-shared-disks/blob/main/README.md#create-virtual-network-resources)
 4. [Create the first virtual machine (myVM01)](https://github.com/ricmmartins/glusterfs-azure-shared-disks/blob/main/README.md#create-the-first-virtual-machine-myvm01)
