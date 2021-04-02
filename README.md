@@ -49,13 +49,14 @@ I'll be using the [Azure Cloud Shell](https://docs.microsoft.com/en-us/azure/clo
    * [Attach the Data Disk to VM01](#attach-the-data-disk-to-vm01)
    * [Attach the Data Disk to VM02](#attach-the-data-disk-to-vm02)
 11. [Create a proximity placement group](#create-a-proximity-placement-group)
-12. [Configure the Disk on Linux VM01](#configure-the-disk-on-linux-vm01)
-13. [Configure the Disk on Linux VM02](#configure-the-disk-on-linux-vm02)
-14. [Install GlusterFS on Linux VM01](#install-glusterfs-on-linux-vm01)
-15. [Install GlusterFS on Linux VM02](#install-glusterfs-on-linux-vm02)
-16. [Configure GlusterFS on Linx VM01](#configure-glusterfs-on-linx-vm01)
-17. [Configure GlusterFS on Linx VM02](#configure-glusterfs-on-linx-vm02)
-18. [Test](#test)
+   * [Move the existing availability set into a proximity placement group](#move-the-existing-availability-set-into-a-proximity-placement-group)
+13. [Configure the Disk on Linux VM01](#configure-the-disk-on-linux-vm01)
+14. [Configure the Disk on Linux VM02](#configure-the-disk-on-linux-vm02)
+15. [Install GlusterFS on Linux VM01](#install-glusterfs-on-linux-vm01)
+16. [Install GlusterFS on Linux VM02](#install-glusterfs-on-linux-vm02)
+17. [Configure GlusterFS on Linx VM01](#configure-glusterfs-on-linx-vm01)
+18. [Configure GlusterFS on Linx VM02](#configure-glusterfs-on-linx-vm02)
+19. [Test](#test)
 
 ## Create SSH key pair
 ```azurepowershell-interactive
