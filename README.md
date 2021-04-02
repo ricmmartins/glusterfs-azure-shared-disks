@@ -460,7 +460,7 @@ In one of the nodes, go to /gluster-storage and create some files:
 ```azurepowershell-interactive
 ssh azureuser@myVM01
 azureuser@myVM01:~# cd /gluster-storage
-azureuser@myVM01:~# touch file{1..10}
+azureuser@myVM01:~# sudo touch file{1..10}
 ```
 Then go to the another node  and check those files:
 ```azurepowershell-interactive
