@@ -49,7 +49,6 @@ I'll be using the [Azure Cloud Shell](https://docs.microsoft.com/en-us/azure/clo
    * [Attach the Data Disk to VM01](#attach-the-data-disk-to-vm01)
    * [Attach the Data Disk to VM02](#attach-the-data-disk-to-vm02)
 10. [Create a proximity placement group](#create-a-proximity-placement-group)
-   * [Move the existing availability set into a proximity placement group](#move-the-existing-availability-set-into-a-proximity-placement-group)
 11. [Configure the Disk on Linux VM01](#configure-the-disk-on-linux-vm01)
 12. [Configure the Disk on Linux VM02](#configure-the-disk-on-linux-vm02)
 13. [Install GlusterFS on Linux VM01](#install-glusterfs-on-linux-vm01)
