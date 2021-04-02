@@ -390,7 +390,7 @@ sudo apt update
 sudo apt install software-properties-common
 sudo add-apt-repository ppa:gluster/glusterfs-7
 sudo apt update
-sudo apt install glusterfs-server -y
+sudo apt install glusterfs-server
 sudo systemctl status glusterd.service
 ```
 ## Install GlusterFS on Linux VM02
@@ -404,11 +404,11 @@ sudo nano /etc/hosts
 192.168.1.5 gluster2.local gluster2
 ```
 ```azurepowershell-interactive
-sudo apt update -
-sudo apt install software-properties-common -y
-sudo add-apt-repository ppa:gluster/glusterfs-7 -y
+sudo apt update 
+sudo apt install software-properties-common 
+sudo add-apt-repository ppa:gluster/glusterfs-7 
 sudo apt update
-sudo apt install glusterfs-server -y
+sudo apt install glusterfs-server 
 sudo systemctl status glusterd.service
 ```
 
