@@ -459,14 +459,12 @@ sudo mount -a
 In one of the nodes, go to /gluster-storage and create some files:
 ```azurepowershell-interactive
 ssh azureuser@myVM01
-azureuser@myVM01:~# cd /gluster-storage
-azureuser@myVM01:~# sudo touch file{1..10}
+azureuser@myVM01:~# sudo touch /gluster-storage/file{1..10}
 ```
 Then go to the another node  and check those files:
 ```azurepowershell-interactive
 ssh azureuser@myVM02
-azureuser@myVM02:~# cd /gluster-storage
-azureuser@myVM02:/gluster-storage$ ls -l
+azureuser@myVM02:~# ls -l /gluster-storage
 total 0
 -rw-r--r-- 1 root root 0 Apr  1 19:48 file1
 -rw-r--r-- 1 root root 0 Apr  1 19:48 file10
