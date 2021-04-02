@@ -2,11 +2,7 @@
 A guide on howto create a redundant storage pool using GlusterFS and Azure Shared Disks 
 
 
-Build your workload in cloud doesn't mean that your workload never will fail. When you start to draft your architecture, consider that all can fail. This is what will ensure your availability. Keep in mind: 
-
-> "Design for failure and nothing fails."
-
-So here I'll show you how to create a redundtant storage pool using [GlusterFS](https://www.gluster.org/) and [Azure Shared Disks](https://docs.microsoft.com/en-us/azure/virtual-machines/disks-shared). GlusterFS is a network-attached storage filesystem that allows you to pool storage resources of multiple machines. Azure shared disks is a new feature for Azure managed disks that allows you to attach a managed disk to multiple virtual machines (VMs) simultaneously. 
+In this article I'll show you how to create a redundtant storage pool using [GlusterFS](https://www.gluster.org/) and [Azure Shared Disks](https://docs.microsoft.com/en-us/azure/virtual-machines/disks-shared). GlusterFS is a network-attached storage filesystem that allows you to pool storage resources of multiple machines. Azure shared disks is a new feature for Azure managed disks that allows you to attach a managed disk to multiple virtual machines (VMs) simultaneously. 
 
 Our setup will consist in:
 
