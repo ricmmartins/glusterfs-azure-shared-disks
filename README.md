@@ -22,20 +22,21 @@ I'll be using the [Azure Cloud Shell](https://docs.microsoft.com/en-us/azure/clo
 
 # Table of contents
 
-1. Create SSH key pair
-2. Create a resource group
-3. Create virtual network resources
-4. Create the first virtual machine (myVM01)
-5. Create the second virtual machine (myVM02)
-6. Create a Shared Data Disk
-7. Create a proximity placement group
-8. Configure the Disk on Linux VM01
-9. Configure the Disk on Linux VM02
-10. Install GlusterFS on Linux VM01
-11. Install GlusterFS on Linux VM02
-12. Configure GlusterFS on Linx VM01
-13. Configure GlusterFS on Linx VM02
-14. Test
+1. [Create SSH key pair](https://github.com/ricmmartins/glusterfs-azure-shared-disks/blob/main/README.md#create-ssh-key-pair)
+2. [Create a resource group](https://github.com/ricmmartins/glusterfs-azure-shared-disks/blob/main/README.md#create-a-resource-group)
+3. [Create virtual network resources](https://github.com/ricmmartins/glusterfs-azure-shared-disks/blob/main/README.md#create-virtual-network-resources)
+4. [Create the first virtual machine (myVM01)](https://github.com/ricmmartins/glusterfs-azure-shared-disks/blob/main/README.md#create-the-first-virtual-machine-myvm01)
+5. [Create the second virtual machine (myVM02)](https://github.com/ricmmartins/glusterfs-azure-shared-disks/blob/main/README.md#create-the-second-virtual-machine-myvm02)
+6. [Create a Shared Data Disk](https://github.com/ricmmartins/glusterfs-azure-shared-disks/blob/main/README.md#create-a-shared-data-disk)
+7. [Create a proximity placement group](https://github.com/ricmmartins/glusterfs-azure-shared-disks/blob/main/README.md#create-a-proximity-placement-group)
+8. [Configure the Disk on Linux VM01](https://github.com/ricmmartins/glusterfs-azure-shared-disks/blob/main/README.md#configure-the-disk-on-linux-vm01)
+9. [Configure the Disk on Linux VM02](https://github.com/ricmmartins/glusterfs-azure-shared-disks/blob/main/README.md#configure-the-disk-on-linux-vm02)
+10. [Install GlusterFS on Linux VM01](https://github.com/ricmmartins/glusterfs-azure-shared-disks/blob/main/README.md#install-glusterfs-on-linux-vm01)
+11. [Install GlusterFS on Linux VM02](https://github.com/ricmmartins/glusterfs-azure-shared-disks/blob/main/README.md#install-glusterfs-on-linux-vm02)
+12. [Configure GlusterFS on Linx VM01](https://github.com/ricmmartins/glusterfs-azure-shared-disks/blob/main/README.md#configure-glusterfs-on-linx-vm01)
+13. [Configure GlusterFS on Linx VM02](https://github.com/ricmmartins/glusterfs-azure-shared-disks/blob/main/README.md#configure-glusterfs-on-linx-vm02)
+14. [Test](https://github.com/ricmmartins/glusterfs-azure-shared-disks/blob/main/README.md#test)
+
 
 
 ## Create SSH key pair
