@@ -2,7 +2,7 @@
 A guide on howto create a redundant storage pool using GlusterFS and Azure Shared Disks 
 
 
-In this article I'll show you how to create a redundtant storage pool using [GlusterFS](https://www.gluster.org/) and [Azure Shared Disks](https://docs.microsoft.com/en-us/azure/virtual-machines/disks-shared). GlusterFS is a network-attached storage filesystem that allows you to pool storage resources of multiple machines. Azure shared disks is a new feature for Azure managed disks that allows you to attach a managed disk to multiple virtual machines (VMs) simultaneously. 
+In this article I'll show you how to create a redundtant storage pool using [GlusterFS](https://www.gluster.org/) and [Azure Shared Disks](https://docs.microsoft.com/en-us/azure/virtual-machines/disks-shared). GlusterFS is a network-attached storage filesystem that allows you to pool storage resources of multiple machines. Azure shared disks is a new feature for Azure managed disks that allows you to attach a managed disk to multiple virtual machines (VMs) simultaneously. Please note that enabling shared disks is only available to a subset of disk types. Currently only ultra disks and premium SSDs can enable shared disks. Check if the VM type you are planning to use support ultra or premium disks.
 
 ![glusterfs](/glusterfs.png)
 
@@ -345,11 +345,9 @@ ssh azureuser@40.114.24.217
 lsblk -o NAME,HCTL,SIZE,MOUNTPOINT | grep -i "sd"
 ```
 ### Partition a new disk
-```azurepowershell-interactive
-sudo parted /dev/sda --script mklabel gpt mkpart xfspart xfs 0% 100%
-sudo mkfs.xfs /dev/sda1
-sudo partprobe /dev/sda1
-```
+
+As the disk already was partitioned on the VM01, we can skip this step now.
+
 ### Mount the disk
 ```azurepowershell-interactive
 sudo mkdir /datadrive
@@ -377,7 +375,7 @@ UUID=f0b4e401-e9dc-472e-b9ca-3fa06a5b2e22   /datadrive   xfs   defaults,nofail  
 
 ## Install GlusterFS on Linux VM01
 
-Please note that in my case the IPs 192.168.1.4 and 192.168.1.4 are the private ip's from VM01 and VM02. Add those configuration on the /etc/hosts
+Please note that in my case the IPs 192.168.1.4 and 192.168.1.5 are the private ip's from VM01 and VM02. Add those configuration on the /etc/hosts
 ```azurepowershell-interactive
 sudo nano /etc/hosts
 ```
@@ -395,7 +393,7 @@ sudo systemctl status glusterd.service
 ```
 ## Install GlusterFS on Linux VM02
 
-Please note that the IPs 192.168.1.4 and 192.168.1.4  are the private ip's from VM01 and VM02. Add those configuration on the /etc/hosts
+Please note that the IPs 192.168.1.4 and 192.168.1.5  are the private ip's from VM01 and VM02. Add those configuration on the /etc/hosts
 ```azurepowershell-interactive
 sudo nano /etc/hosts
 ```
