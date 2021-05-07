@@ -16,7 +16,10 @@ Our setup will consist in:
       * 2 Network Security Groups (1 per VM Network Interface Card)
    * A Shared Data Disk attached to the both VMs
 
-I'll be using the [Azure Cloud Shell](https://docs.microsoft.com/en-us/azure/cloud-shell/overview) once is fully integrated to Azure and with all modules I need already installed.
+I'll be using the [Azure Cloud Shell](https://docs.microsoft.com/en-us/azure/cloud-shell/overview) once is fully integrated to Azure and with all modules I need already installed. Make sure to swhich to PowerShell:
+
+![selectshell](/select-shell-drop-down.png)
+
 
 # Table of contents
 
